@@ -1,12 +1,11 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="appengine-mapreduce-jruby-example:war exploded">
-    <output-path>$PROJECT_DIR$/target/artifacts/appengine_mapreduce_jruby_example_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/appengine-mapreduce-jruby-example/target/appengine-mapreduce-jruby-example-0.0.1-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="appengine-mapreduce-jruby-example" />
           <element id="library" level="application" name="JRuby SDK 1.5.2 facet library" />
-          <element id="module-output" name="appengine-mapreduce-jruby" />
           <element id="module-output" name="appengine-mapreduce" />
         </element>
         <element id="directory" name="lib">
@@ -23,7 +22,7 @@
           <element id="library" level="project" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.3.7" />
           <element id="library" level="project" name="Maven: com.google.appengine:appengine-api-labs:1.3.7" />
           <element id="library" level="project" name="Maven: org.jruby.rack:jruby-rack:1.0.3" />
-          <element id="library" level="module" name="google-appengine gems" module-name="appengine-mapreduce-jruby" />
+          <element id="artifact" artifact-name="appengine-mapreduce-jruby:jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="appengine-mapreduce-jruby-example/web/Web" />

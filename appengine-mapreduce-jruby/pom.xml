@@ -8,9 +8,9 @@
     <packaging>jar</packaging>
 
     <!--<parent>-->
-    <!--<groupId>com.jetthoughts.appengine.tools</groupId>-->
+    <groupId>com.jetthoughts.appengine.tools</groupId>
     <!--<artifactId>appengine-mapreduce-jruby-parent</artifactId>-->
-    <!--<version>0.0.1-SNAPSHOT</version>-->
+    <version>0.0.1-SNAPSHOT</version>
     <!--</parent>-->
 
 
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>LATEST</version>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
 

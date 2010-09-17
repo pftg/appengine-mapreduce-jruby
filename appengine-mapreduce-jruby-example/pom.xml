@@ -9,7 +9,7 @@
 
     <!--<parent>-->
         <groupId>com.jetthoughts.appengine.tools</groupId>
-        <!--<artifactId>appengine-mapreduce-jruby-parent</artifactId>-->
+        <!--<artifactId>appengine-mapreduce-jruby-parent</artifactId> ☐ ☑ ☒-->
         <version>0.0.1-SNAPSHOT</version>
     <!--</parent>-->
 

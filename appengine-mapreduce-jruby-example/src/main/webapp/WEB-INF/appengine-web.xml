@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <application>appengine-mapreduce-jruby-example</application>
+    <version>testing</version>
+    <system-properties>
+        <property name="java.util.logging.config.file"
+                  value="WEB-INF/logging.properties"/>
+    </system-properties>
+
+    <ssl-enabled>true</ssl-enabled>
+    <precompilation-enabled>true</precompilation-enabled>
+    <sessions-enabled>false</sessions-enabled>
+</appengine-web-app>

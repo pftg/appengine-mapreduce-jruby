@@ -1,0 +1,41 @@
+<configurations>
+    <configuration name="Demo Mapper">
+        <property>
+            <name>mapreduce.map.class</name>
+            <value>com.google.appengine.demos.mapreduce.TestMapper</value>
+        </property>
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">PBFVotes</value>
+        </property>
+    </configuration>
+
+
+    <configuration name="JRubyMapper">
+        <property>
+            <name>mapreduce.map.class</name>
+            <value>com.jetthoughts.appengine.tools.mapreduce.JRubyMapper</value>
+        </property>
+        <property>
+            <name>mapreduce.ruby.script</name>
+            <value>
+                def map *args
+                  p args
+                end
+            </value>
+        </property>
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">PBFVotes</value>
+        </property>
+    </configuration>
+
+</configurations>

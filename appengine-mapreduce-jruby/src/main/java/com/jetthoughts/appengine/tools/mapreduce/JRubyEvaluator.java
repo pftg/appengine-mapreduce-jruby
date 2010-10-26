@@ -42,11 +42,11 @@ public class JRubyEvaluator {
     /**
      * ruby script name kicked by Java at first
      */
-    private String scriptFileName;
+    private String mapperScript;
 
 
     public JRubyEvaluator(Configuration conf) {
-        scriptFileName = conf.get("mapreduce.ruby.script");
+        mapperScript = conf.get("mapreduce.ruby.script");
 
 
         setupEngine();
@@ -55,7 +55,7 @@ public class JRubyEvaluator {
     public Object invoke(String methodName, Object conf) throws ScriptException {
         Object self = this; // if receiver is null, should use toplevel.
         Object result = rubyEngine.callMethod(self, methodName, new Object[]{
-                conf, scriptFileName}, Object[].class);
+                conf, mapperScript}, Object[].class);
         invokeCounter++;
         return result;
     }
@@ -99,9 +99,10 @@ public class JRubyEvaluator {
             rubyEngine.getProvider().setLoadPaths(loadPaths);
 
             rubyEngine.runScriptlet(wrapperFile, WRAPPER_FILE_NAME);
-            if (scriptFileName != null) {
-                rubyEngine.runScriptlet(scriptFileName);
-            }
+//            if (mapperScript != null) {
+                rubyEngine.runScriptlet(mapperScript);
+//            }
+
 
         } catch (Exception e) {
             e.printStackTrace();

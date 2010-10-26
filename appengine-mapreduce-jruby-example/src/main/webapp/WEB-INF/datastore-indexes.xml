@@ -3,4 +3,12 @@
   <datastore-index kind="PBFVotes" ancestor="false">
     <property name="__key__" direction="desc" />
   </datastore-index>
+
+  <datastore-index kind="Games" ancestor="false">
+    <property name="__key__" direction="desc" />
+  </datastore-index>
+
+  <datastore-index kind="ScrapedPage" ancestor="false">
+    <property name="__key__" direction="desc" />
+  </datastore-index>
 </datastore-indexes>

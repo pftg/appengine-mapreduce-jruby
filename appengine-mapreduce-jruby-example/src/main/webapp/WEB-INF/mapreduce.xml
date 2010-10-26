@@ -24,7 +24,7 @@
             <name>mapreduce.ruby.script</name>
             <value>
                 def map *args
-                  p args
+                p args
                 end
             </value>
         </property>
@@ -37,5 +37,152 @@
             <value template="optional">PBFVotes</value>
         </property>
     </configuration>
+
+
+    <configuration name="Naive Mass toLowercase()">
+        <property>
+            <name>mapreduce.map.class</name>
+
+            <!--  Set this to be your Mapper class  -->
+            <value>com.ikai.mapperdemo.mappers.NaiveToLowercaseMapper</value>
+        </property>
+
+        <!--  This is a default tool that lets us iterate over datastore entities -->
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">Comment</value>
+        </property>
+    </configuration>
+
+    <configuration name="Mass toLowercase() with Mutation Pool">
+        <property>
+            <name>mapreduce.map.class</name>
+
+            <!--  Set this to be your Mapper class  -->
+            <value>com.ikai.mapperdemo.mappers.PooledToLowercaseMapper</value>
+        </property>
+
+        <!--  This is a default tool that lets us iterate over datastore entities -->
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">Comment</value>
+        </property>
+
+    </configuration>
+
+
+    <configuration name="Delete all Entities">
+        <property>
+            <name>mapreduce.map.class</name>
+
+            <!--  Set this to be your Mapper class  -->
+            <value>com.ikai.mapperdemo.mappers.DeleteAllMapper</value>
+        </property>
+
+        <!--  This is a default tool that lets us iterate over datastore entities -->
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">Comment</value>
+        </property>
+    </configuration>
+
+
+    <configuration name="Count words in all Comments">
+        <property>
+            <name>mapreduce.map.class</name>
+
+            <!--  Set this to be your Mapper class  -->
+            <value>com.ikai.mapperdemo.mappers.CountWordsMapper</value>
+        </property>
+
+        <property>
+            <!--  This is the URL to call after the entire Mapper has run -->
+            <name>mapreduce.appengine.donecallback.url</name>
+            <value>/callbacks/word_count_completed</value>
+        </property>
+
+        <!--  This is a default tool that lets us iterate over datastore entities -->
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">Comment</value>
+        </property>
+
+    </configuration>
+
+    <configuration name="Count substring matches in all Comments">
+        <property>
+            <name>mapreduce.map.class</name>
+
+            <!--  Set this to be your Mapper class  -->
+            <value>com.ikai.mapperdemo.mappers.SubstringMatcherMapper</value>
+        </property>
+
+        <!--  This is a default tool that lets us iterate over datastore entities -->
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+        </property>
+
+        <property>
+            <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+            <value template="optional">Comment</value>
+        </property>
+
+        <property>
+            <name human="Search for substring">mapreduce.mapper.counter.substringtarget</name>
+            <value template="optional">Substring</value>
+        </property>
+
+
+    </configuration>
+
+
+    <configuration name="Import all data from the Blobstore">
+        <property>
+            <name>mapreduce.map.class</name>
+
+            <!--  Set this to be your Mapper class  -->
+            <value>com.ikai.mapperdemo.mappers.ImportFromBlobstoreMapper</value>
+        </property>
+
+        <!--  This is a default tool that lets us iterate over blobstore data -->
+        <property>
+            <name>mapreduce.inputformat.class</name>
+            <value>com.google.appengine.tools.mapreduce.BlobstoreInputFormat</value>
+        </property>
+
+        <property>
+            <name human="Blob Keys to Map Over">mapreduce.mapper.inputformat.blobstoreinputformat.blobkeys</name>
+            <value template="optional">blobkeyhere</value>
+        </property>
+
+        <property>
+            <name human="Number of shards to use">mapreduce.mapper.shardcount</name>
+            <value template="optional">10</value>
+        </property>
+
+
+    </configuration>
+
 
 </configurations>

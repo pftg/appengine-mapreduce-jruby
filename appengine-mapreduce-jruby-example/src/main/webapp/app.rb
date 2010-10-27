@@ -1,12 +1,23 @@
 require 'sinatra'
 require 'appengine-mapreduce/job'
+require 'appengine-apis/datastore'
+
+require 'base64'
+require 'zlib'
 
 get '/' do
   "Hello"
 end
 
-get '/run' do
-  job = AppEngine::MapReduce::Job.new :input_kind => "PBFVotes"
+post '/run' do
+  job = AppEngine::MapReduce::Job.new({:input_kind => "PBFVotes"}.merge(params))
   job.run
-  "Job have been added!"
+  redirect '/mapreduce/status'
+end
+
+
+get '/scraped_page' do
+  entry = AppEngine::Datastore::Query.new('ScrapedPage').fetch(:limit => 1)
+
+  Zlib::Inflate.inflate(Base64.decode64(entry.first['converted_body']))
 end

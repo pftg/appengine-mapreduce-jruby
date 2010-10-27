@@ -1,0 +1,21 @@
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "appengine-mapreduce"
+    gemspec.summary = "AppEngine MapReduce JRuby Wrapper"
+    gemspec.description = ""
+    gemspec.version = "0.0.1"
+    gemspec.email = "pftg@jetthoughts.com"
+    gemspec.homepage = "http://github.com/pftg/appengine-mapreduce-jruby"
+    gemspec.authors = ["Paul Nikitochkin"]
+    gemspec.files.include [
+            "Rakefile",
+            "VERSION",
+            "lib/appengine-mapreduce-jruby-0.0.1-SNAPSHOT.jar"
+    ]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
+
+Jeweler::GemcutterTasks.new

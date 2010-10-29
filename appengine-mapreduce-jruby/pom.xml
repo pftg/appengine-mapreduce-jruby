@@ -134,6 +134,24 @@
           <author>pftg</author>
         </configuration>
       </plugin>
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <!--outputDirectory>${project.build.directory}</outputDirectory -->
+              <!--includeScope>compile</includeScope -->
+              <excludeArtifactIds>jruby-complete,jetty,easymock,easymockclassextension</excludeArtifactIds>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 

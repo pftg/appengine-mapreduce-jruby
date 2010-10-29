@@ -9,37 +9,76 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Nikitochkin"]
-  s.date = %q{2010-09-18}
-  s.description = %q{}
+  s.date = %q{2010-10-29}
+  s.description = %q{ longer description of your gem}
   s.email = %q{pftg@jetthoughts.com}
   s.files = [
     "Rakefile",
      "VERSION",
-     "appengine-mapreduce-jruby.iml",
-     "pom.xml",
-     "src/LICENSE",
-     "src/main/java/com/jetthoughts/appengine/tools/mapreduce/JRubyEvaluator.java",
-     "src/main/java/com/jetthoughts/appengine/tools/mapreduce/JRubyMapper.java",
-     "src/main/resources/appengine-mapreduce.rb",
-     "src/main/resources/appengine-mapreduce/boot.rb",
-     "src/main/resources/appengine-mapreduce/job.rb",
-     "src/main/resources/com/jetthoughts/appengine/tools/mapreduce/ruby_wrapper.rb",
-     "src/test/java/com/jetthoughts/appengine/tools/mapreduce/JRubyMapperTest.java"
+     "lib/appengine-mapreduce.rb",
+     "lib/appengine-mapreduce/boot.rb",
+     "lib/appengine-mapreduce/datastore_input_format.rb",
+     "lib/appengine-mapreduce/job.rb",
+     "target/appengine-mapreduce-jruby-0.0.1-SNAPSHOT.jar",
+     "target/dependency/ant-1.6.5.jar",
+     "target/dependency/aopalliance-1.0.jar",
+     "target/dependency/appengine-api-1.0-sdk-1.3.8.jar",
+     "target/dependency/appengine-api-labs-1.3.8.jar",
+     "target/dependency/appengine-api-stubs-1.3.8.jar",
+     "target/dependency/appengine-mapper-r108.jar",
+     "target/dependency/appengine-testing-1.3.8.jar",
+     "target/dependency/cglib-nodep-2.2.jar",
+     "target/dependency/charts4j-1.2.jar",
+     "target/dependency/commons-cli-1.2.jar",
+     "target/dependency/commons-codec-1.3.jar",
+     "target/dependency/commons-el-1.0.jar",
+     "target/dependency/commons-httpclient-3.0.1.jar",
+     "target/dependency/commons-logging-1.1.1.jar",
+     "target/dependency/commons-net-1.4.1.jar",
+     "target/dependency/core-3.1.1.jar",
+     "target/dependency/easymock-2.5.2.jar",
+     "target/dependency/easymockclassextension-2.5.2.jar",
+     "target/dependency/guava-r05.jar",
+     "target/dependency/guice-2.0.jar",
+     "target/dependency/guice-servlet-2.0.jar",
+     "target/dependency/hadoop-core-0.20.2.jar",
+     "target/dependency/hsqldb-1.8.0.10.jar",
+     "target/dependency/jasper-compiler-5.5.12.jar",
+     "target/dependency/jasper-runtime-5.5.12.jar",
+     "target/dependency/jets3t-0.7.1.jar",
+     "target/dependency/jetty-6.1.14.jar",
+     "target/dependency/jetty-util-6.1.14.jar",
+     "target/dependency/jruby-complete-1.5.3.jar",
+     "target/dependency/json-20090211.jar",
+     "target/dependency/jsp-2.1-6.1.14.jar",
+     "target/dependency/jsp-api-2.1-6.1.14.jar",
+     "target/dependency/junit-4.8.1.jar",
+     "target/dependency/kfs-0.3.jar",
+     "target/dependency/objenesis-1.2.jar",
+     "target/dependency/oro-2.0.8.jar",
+     "target/dependency/servlet-api-2.5-6.1.14.jar",
+     "target/dependency/xmlenc-0.52.jar"
   ]
-  s.homepage = %q{http://github.com/pftg/appengine-mapreduce-jruby}
+  s.homepage = %q{http://github.com/defunkt/appengine-mapreduce}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{AppEngine MapReduce JRuby Wrapper}
+  s.summary = %q{one-line summary of your gem}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_runtime_dependency(%q<appengine-apis>, [">= 0"])
     else
+      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<appengine-apis>, [">= 0"])
     end
   else
+    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<appengine-apis>, [">= 0"])
   end
 end
 

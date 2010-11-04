@@ -73,18 +73,18 @@
         <name>atlassian</name>
         <url>http://maven.atlassian.com/repository/public/</url>
       </repository>
-      <repository>
-        <id>rubygems</id>
-        <releases>
-          <updatePolicy>never</updatePolicy>
-          <checksumPolicy>ignore</checksumPolicy>
-        </releases>
-        <snapshots>
-          <enabled>false</enabled>
-        </snapshots>
-        <url>http://rubygems.org/gems</url>
-        <layout>gem</layout>
-      </repository>
+      <!--<repository>-->
+        <!--<id>rubygems</id>-->
+        <!--<releases>-->
+          <!--<updatePolicy>never</updatePolicy>-->
+          <!--<checksumPolicy>ignore</checksumPolicy>-->
+        <!--</releases>-->
+        <!--<snapshots>-->
+          <!--<enabled>false</enabled>-->
+        <!--</snapshots>-->
+        <!--<url>http://rubygems.org/gems</url>-->
+        <!--<layout>gem</layout>-->
+      <!--</repository>-->
       <repository>
         <id>seasar</id>
         <url>http://maven.seasar.org/maven2</url>

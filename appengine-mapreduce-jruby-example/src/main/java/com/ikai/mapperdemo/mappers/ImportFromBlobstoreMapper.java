@@ -50,10 +50,11 @@ public class ImportFromBlobstoreMapper extends
 //                log.severe(e.getLocalizedMessage());
 //            }
 
-//        DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
-//        datastoreService.put(page);
+        DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+        datastoreService.put(page);
 
-        this.getAppEngineContext(context).getMutationPool().put(page);
+        log.info("Put page --------------------------------------------------\n\n\n\n");
+//        this.getAppEngineContext(context).getMutationPool().put(page);
 //        }
 
     }

@@ -1,0 +1,8 @@
+indexes:
+
+- kind: PBFVotes
+  ancestor: no
+  properties:
+  - name: __key__
+    direction: desc
+

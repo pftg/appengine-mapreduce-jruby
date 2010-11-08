@@ -146,7 +146,8 @@
             </goals>
             <configuration>
               <!--outputDirectory>${project.build.directory}</outputDirectory -->
-              <!--includeScope>compile</includeScope -->
+              <includeScope>compile</includeScope>
+              <excludeScope>test,runtime</excludeScope>
               <excludeArtifactIds>jruby-complete,jetty,easymock,easymockclassextension</excludeArtifactIds>
             </configuration>
           </execution>

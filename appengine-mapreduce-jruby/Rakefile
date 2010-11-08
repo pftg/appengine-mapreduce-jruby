@@ -2,10 +2,8 @@ require 'rubygems'
 require 'rake'
 
 task :build do
-  puts "Prepare jar ... "
+  puts "Packaging jars with maven ..."
   system 'mvn package'
-#  system 'cp target/dependency/*.jar lib/'
-#  system 'cp target/appengine-mapreduce-*.jar lib/appengine-mapreduce.jar'
 end
 
 

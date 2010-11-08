@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+<web-app>
     <servlet>
         <servlet-name>mapreduce</servlet-name>
         <servlet-class>
@@ -46,33 +42,33 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
 
     <servlet>
-        <servlet-name>Upload</servlet-name>
+        <servlet-name>upload</servlet-name>
         <servlet-class>com.ikai.mapperdemo.servlets.UploadBlobServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>SuccessfulUpload</servlet-name>
+        <servlet-name>successful-upload</servlet-name>
         <servlet-class>com.ikai.mapperdemo.servlets.SuccessfulUploadServlet</servlet-class>
     </servlet>
 
 
     <servlet>
-        <servlet-name>Serve</servlet-name>
+        <servlet-name>serve</servlet-name>
         <servlet-class>com.ikai.mapperdemo.servlets.ServeBlobServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Serve</servlet-name>
+        <servlet-name>serve</servlet-name>
         <url-pattern>/serve</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>Upload</servlet-name>
+        <servlet-name>upload</servlet-name>
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>SuccessfulUpload</servlet-name>
+        <servlet-name>successful-upload</servlet-name>
         <url-pattern>/upload-success</url-pattern>
     </servlet-mapping>
 
@@ -81,29 +77,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-
-    <!-- We put an admin constraint on everything, since MapReduce can use a
-significant amount of resources. In practice, you'll probably want
-to restrict just /mapreduce/* -->
-    <!--
-        <security-constraint>
-            <web-resource-collection>
-                <url-pattern>/*</url-pattern>
-            </web-resource-collection>
-            <auth-constraint>
-                <role-name>admin</role-name>
-            </auth-constraint>
-        </security-constraint>
-    -->
-
     <filter>
-        <filter-name>org.jruby.rack.RackFilter</filter-name>
+        <filter-name>rack-filter</filter-name>
         <filter-class>org.jruby.rack.RackFilter</filter-class>
     </filter>
+
     <filter-mapping>
-        <filter-name>org.jruby.rack.RackFilter</filter-name>
+        <filter-name>rack-filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <listener>
         <listener-class>com.google.appengine.jruby.LazyContextListener</listener-class>
     </listener>

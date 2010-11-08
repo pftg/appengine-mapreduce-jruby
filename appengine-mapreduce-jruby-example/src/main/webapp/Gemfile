@@ -6,5 +6,7 @@ bundle_path ".gems/bundler_gems"
 # List gems to bundle here:
 gem 'appengine-rack'
 gem 'appengine-apis'
+#gem 'appengine-mapreduce'
+gem 'json_pure'
 
 gem 'sinatra'

@@ -5,6 +5,8 @@ module AppEngine
     BLOBSTORE_INPUT_FORMAT = "com.google.appengine.tools.mapreduce.BlobstoreInputFormat"
     DATASTORE_INPUT_FORMAT = "com.google.appengine.tools.mapreduce.DatastoreInputFormat"
 
+    OUTPUT_ENTITY_KIND_KEY = "mapreduce.mapper.outputformat.datastoreoutputformat.entitykind"
+
     CALLBACK_KEY = "mapreduce.appengine.donecallback.url"
     
     import com.google.appengine.tools.mapreduce.ConfigurationXmlUtil
@@ -42,6 +44,10 @@ module AppEngine
         @properties[DatastoreInputFormat::ENTITY_KIND_KEY] = aKind
       end
 
+      def output_kind= aKind
+        @properties[OUTPUT_ENTITY_KIND_KEY] = aKind
+      end
+
       def map= aMap
         @properties["mapreduce.ruby.script"] = aMap
       end
@@ -51,7 +57,7 @@ module AppEngine
       end
 
       def use_blobstore_input_class
-        input_class = BLOBSTORE_INPUT_FORMAT
+        self.input_class = BLOBSTORE_INPUT_FORMAT
       end
 
       protected

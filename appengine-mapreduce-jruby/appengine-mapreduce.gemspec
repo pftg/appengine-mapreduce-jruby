@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Nikitochkin"]
-  s.date = %q{2010-10-31}
+  s.date = %q{2010-11-05}
   s.description = %q{ longer description of your gem}
   s.email = %q{pftg@jetthoughts.com}
   s.files = [
@@ -23,10 +23,7 @@ Gem::Specification.new do |s|
      "target/dependency/aopalliance-1.0.jar",
      "target/dependency/appengine-api-1.0-sdk-1.3.8.jar",
      "target/dependency/appengine-api-labs-1.3.8.jar",
-     "target/dependency/appengine-api-stubs-1.3.8.jar",
      "target/dependency/appengine-mapper-r108.jar",
-     "target/dependency/appengine-testing-1.3.8.jar",
-     "target/dependency/cglib-nodep-2.2.jar",
      "target/dependency/charts4j-1.2.jar",
      "target/dependency/commons-cli-1.2.jar",
      "target/dependency/commons-logging-1.1.1.jar",
@@ -34,9 +31,7 @@ Gem::Specification.new do |s|
      "target/dependency/guice-2.0.jar",
      "target/dependency/guice-servlet-2.0.jar",
      "target/dependency/hadoop-core-0.20.2-appengine.jar",
-     "target/dependency/json-20090211.jar",
-     "target/dependency/junit-4.8.1.jar",
-     "target/dependency/objenesis-1.2.jar"
+     "target/dependency/json-20090211.jar"
   ]
   s.homepage = %q{http://github.com/defunkt/appengine-mapreduce}
   s.rdoc_options = ["--charset=UTF-8"]

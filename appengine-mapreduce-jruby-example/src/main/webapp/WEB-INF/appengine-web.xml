@@ -8,6 +8,6 @@
     </system-properties>
 
     <ssl-enabled>true</ssl-enabled>
-    <precompilation-enabled>true</precompilation-enabled>
+    <precompilation-enabled>false</precompilation-enabled>
     <sessions-enabled>false</sessions-enabled>
 </appengine-web-app>

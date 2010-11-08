@@ -22,7 +22,7 @@
         </property>
         <property>
             <name>mapreduce.ruby.script</name>
-            <value>
+            <value template="optional">
                 def map *args
                 p args
                 end
@@ -30,7 +30,7 @@
         </property>
         <property>
             <name>mapreduce.inputformat.class</name>
-            <value>com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
+            <value template="optional">com.google.appengine.tools.mapreduce.DatastoreInputFormat</value>
         </property>
         <property>
             <name human="Entity Kind to Map Over">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>

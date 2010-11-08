@@ -1,0 +1,28 @@
+application: otyn
+version: mapreduce
+runtime: jruby
+
+handlers:
+- url: /remote_api/*
+  servlet: com.google.apphosting.utils.remoteapi.RemoteApiServlet
+  name: remoteapi
+- url: /mapreduce/*
+  servlet: com.google.appengine.tools.mapreduce.MapReduceServlet
+  name: mapreduce
+- url: /init
+  servlet: com.google.appengine.demos.mapreduce.InitServlet
+  name: init
+- url: /upload
+  servlet: com.ikai.mapperdemo.servlets.UploadBlobServlet
+  name: upload
+- url: /upload-success
+  servlet: com.ikai.mapperdemo.servlets.SuccessfulUploadServlet
+  name: upload-success
+- url: /serve
+  servlet: com.ikai.mapperdemo.servlets.ServeBlobServlet
+  name: serve
+- url: /*
+  filter: org.jruby.rack.RackFilter
+
+listeners:
+  - com.google.appengine.jruby.LazyContextListener

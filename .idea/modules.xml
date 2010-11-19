@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/appengine-mapreduce/appengine-mapreduce.iml" filepath="$PROJECT_DIR$/appengine-mapreduce/appengine-mapreduce.iml" />
       <module fileurl="file://$PROJECT_DIR$/appengine-mapreduce-jruby/appengine-mapreduce-jruby.iml" filepath="$PROJECT_DIR$/appengine-mapreduce-jruby/appengine-mapreduce-jruby.iml" />
       <module fileurl="file://$PROJECT_DIR$/appengine-mapreduce-jruby-example/appengine-mapreduce-jruby-example.iml" filepath="$PROJECT_DIR$/appengine-mapreduce-jruby-example/appengine-mapreduce-jruby-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
     </modules>
   </component>
 </project>

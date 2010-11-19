@@ -54,7 +54,7 @@
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-mapper</artifactId>
-      <version>r108</version>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
 

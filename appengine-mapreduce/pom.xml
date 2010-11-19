@@ -7,11 +7,10 @@
     <groupId>com.google.appengine</groupId>
     <artifactId>appengine-mapper</artifactId>
     <name>Google App Engine Map/Reduce Framework</name>
-    <version>r108</version>
     <packaging>jar</packaging>
 
-    <description>AppEngine-MapReduce is an open-source library for doing MapReduce-style
-        computations on the Google App Engine platform.
+    <description>
+      AppEngine-MapReduce is an open-source library for doing MapReduce-style computations on the Google App Engine platform.
     </description>
 
     <parent>

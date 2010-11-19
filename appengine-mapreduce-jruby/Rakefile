@@ -3,7 +3,7 @@ require 'rake'
 
 task :build do
   puts "Packaging jars with maven ..."
-  system 'mvn package'
+  raise $? unless system 'mvn package'
 end
 
 

@@ -22,6 +22,7 @@ begin
     gem.files.include [
       "VERSION",
       "COPYING",
+      "NOTICE",
       "Rakefile",
       "target/**/*.jar"
     ]

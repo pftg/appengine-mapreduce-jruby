@@ -17,6 +17,7 @@ begin
     gem.homepage = "http://github.com/pftg/appengine-mapreduce"
     gem.authors = ["Paul Nikitochkin"]
     gem.add_dependency "appengine-apis", ">= 0"
+    gem.platform = Gem::Platform::RUBY
 
     gem.files =  Dir.glob('lib/**/*.rb')
     gem.files.include [

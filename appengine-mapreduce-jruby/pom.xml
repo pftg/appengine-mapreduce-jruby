@@ -22,10 +22,12 @@
     </jruby.plugin.version>
   </properties>
 
+  <url>http://github.com/pftg/appengine-mapreduce/</url>
+  <inceptionYear>2010</inceptionYear>
   <licenses>
     <license>
-      <name>MIT</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -35,7 +37,7 @@
     <dependency>
       <groupId>org.jruby</groupId>
       <artifactId>jruby-complete</artifactId>
-      <version>1.5.3</version>
+      <version>1.5.5</version>
     </dependency>
 
     <dependency>
@@ -134,7 +136,7 @@
           <author>pftg</author>
         </configuration>
       </plugin>
-        <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
@@ -146,79 +148,79 @@
             </goals>
             <configuration>
               <!--outputDirectory>${project.build.directory}</outputDirectory -->
-              <includeScope>compile</includeScope>
-              <excludeScope>test,runtime</excludeScope>
-              <excludeArtifactIds>jruby-complete,jetty,easymock,easymockclassextension</excludeArtifactIds>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+            <includeScope>compile</includeScope>
+            <excludeScope>test,runtime</excludeScope>
+            <excludeArtifactIds>jruby-complete,jetty,easymock,easymockclassextension</excludeArtifactIds>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
 
-  <repositories>
-    <repository>
-      <id>codehaus</id>
-      <url>http://repository.codehaus.org</url>
-    </repository>
-    <repository>
-      <id>bedatadriven-thirdparty</id>
-      <url>http://nexus.bedatadriven.com/content/repositories/thirdparty/</url>
-    </repository>
-    <repository>
-      <id>apache</id>
-      <name>apache</name>
-      <url>http://repository.apache.org</url>
-    </repository>
-    <repository>
-      <id>appache-rep</id>
-      <name>apache-rep</name>
-      <url>https://repository.apache.org/content/repositories/releases/</url>
-    </repository>
-    <repository>
-      <id>atlassian</id>
-      <name>atlassian</name>
-      <url>http://maven.atlassian.com/repository/public/</url>
-    </repository>
-    <!--<repository>-->
-      <!--<id>rubygems</id>-->
-      <!--<releases>-->
-        <!--<updatePolicy>never</updatePolicy>-->
-        <!--<checksumPolicy>ignore</checksumPolicy>-->
+<repositories>
+  <repository>
+    <id>codehaus</id>
+    <url>http://repository.codehaus.org</url>
+  </repository>
+  <repository>
+    <id>bedatadriven-thirdparty</id>
+    <url>http://nexus.bedatadriven.com/content/repositories/thirdparty/</url>
+  </repository>
+  <repository>
+    <id>apache</id>
+    <name>apache</name>
+    <url>http://repository.apache.org</url>
+  </repository>
+  <repository>
+    <id>appache-rep</id>
+    <name>apache-rep</name>
+    <url>https://repository.apache.org/content/repositories/releases/</url>
+  </repository>
+  <repository>
+    <id>atlassian</id>
+    <name>atlassian</name>
+    <url>http://maven.atlassian.com/repository/public/</url>
+  </repository>
+  <!--<repository>-->
+    <!--<id>rubygems</id>-->
+    <!--<releases>-->
+      <!--<updatePolicy>never</updatePolicy>-->
+      <!--<checksumPolicy>ignore</checksumPolicy>-->
       <!--</releases>-->
-      <!--<snapshots>-->
-        <!--<enabled>false</enabled>-->
+    <!--<snapshots>-->
+      <!--<enabled>false</enabled>-->
       <!--</snapshots>-->
-      <!--<url>http://rubygems.org/gems</url>-->
-      <!--<layout>gem</layout>-->
+    <!--<url>http://rubygems.org/gems</url>-->
+    <!--<layout>gem</layout>-->
     <!--</repository>-->
-    <repository>
-      <id>seasar</id>
-      <url>http://maven.seasar.org/maven2</url>
-    </repository>
-  </repositories>
+  <repository>
+    <id>seasar</id>
+    <url>http://maven.seasar.org/maven2</url>
+  </repository>
+</repositories>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>ossrh</id>
-      <name>Sonatype OSS Repository</name>
-      <url>http://oss.sonatype.org/content/groups/public</url>
-      <layout>default</layout>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>seasar</id>
-      <url>http://maven.seasar.org/maven2</url>
-    </pluginRepository>
-  </pluginRepositories>
+<pluginRepositories>
+  <pluginRepository>
+    <id>ossrh</id>
+    <name>Sonatype OSS Repository</name>
+    <url>http://oss.sonatype.org/content/groups/public</url>
+    <layout>default</layout>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+      <updatePolicy>daily</updatePolicy>
+    </snapshots>
+  </pluginRepository>
+  <pluginRepository>
+    <id>seasar</id>
+    <url>http://maven.seasar.org/maven2</url>
+  </pluginRepository>
+</pluginRepositories>
 
-  <!--
+<!--
 
     <profiles>
         <profile>

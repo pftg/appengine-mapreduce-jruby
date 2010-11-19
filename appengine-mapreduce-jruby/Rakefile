@@ -21,6 +21,7 @@ begin
     gem.files =  Dir.glob('lib/**/*.rb')
     gem.files.include [
       "VERSION",
+      "COPYING",
       "Rakefile",
       "target/**/*.jar"
     ]

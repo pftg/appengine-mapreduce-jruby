@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.description = %q{Create Map Tasks with JRuby.}
   s.email = %q{pftg@jetthoughts.com}
   s.files = [
+    "COPYING",
+    "NOTICE",
     "Rakefile",
     "VERSION",
     "lib/appengine-mapreduce.rb",

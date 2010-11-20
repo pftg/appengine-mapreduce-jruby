@@ -11,4 +11,4 @@ rescue Exception => e
   puts e.backtrace
 end
 
-require File.join(File.dirname(__FILE__), 'mapreduce_stubs')
+#require File.join(File.dirname(__FILE__), 'mapreduce_stubs')

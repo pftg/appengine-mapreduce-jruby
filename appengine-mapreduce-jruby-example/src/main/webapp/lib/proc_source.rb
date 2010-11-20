@@ -1,13 +1,12 @@
 require 'stringio'
 require 'irb/ruby-lex'
 
-# Tell the ruby interpreter to load code lines of required files
-# into this filename -> lines Hash. This behaviour seems to be
-# very undocumented and therefore shouldn't really be relied on.
 SCRIPT_LINES__ = {} unless defined? SCRIPT_LINES__
 
 module ProcSource #:nodoc:
   def get_lines(filename, start_line = 0)
+    return nil unless filename
+
     case filename
       # special "(irb)" descriptor?
       when "(irb)"
@@ -32,9 +31,7 @@ module ProcSource #:nodoc:
   end
 
   def handle(proc)
-    puts proc.old_inspect
-    filename, line = proc.source_descriptor
-    puts "Filename #{filename.inspect}"
+    filename, line = source_descriptor proc
     lines = get_lines(filename, line) || []
 
     lexer = RubyLex.new
@@ -128,91 +125,100 @@ module ProcSource #:nodoc:
 
       # Can't use .strip because newline at end of code might be important
       # (Stuff would break when somebody does proc { ... #foo\n})
-      proc.source = source.join.gsub(/^ | $/, "")
+      source.join.gsub(/^ | $/, "")
     end
   end
 
-  module_function :handle, :get_lines
-end
-
-class Proc #:nodoc:
-  def source_descriptor
-    if md = /^#<Proc:0x[0-9A-Fa-f]+@(.+):(\d+)>$/.match(old_inspect)
+  def source_descriptor p
+    if md = /^#<Proc:0x[0-9A-Fa-f]+@(.+):(\d+)>$/.match(p.inspect)
       filename, line = md.captures
       return filename, line.to_i
     end
   end
 
-  def self.source_cache
-    @source_cache ||= {}
-  end
 
-  def source=(code)
-    @source = Proc.source_cache[source_descriptor.join('/')] = code
-  end
-
-  def source
-    @source = Proc.source_cache[source_descriptor.join('/')]
-    ProcSource.handle(self) unless @source
-    @source
-  end
-
-  alias :old_inspect :inspect
-
-  def inspect
-    if source
-      "proc {#{source}}"
-    else
-      old_inspect
-    end
-  end
-
-  def ==(other)
-    if self.source && other.respond_to?(:source) && other.source
-      self.source == other.source
-    else
-      self.object_id == other.object_id
-    end
-  end
-
-  def _dump(depth = 0)
-    if source
-      source
-    else
-      raise(TypeError, "Can't serialize Proc with unknown source code.")
-    end
-  end
-
-  def to_yaml(*args)
-    self.source # force @source to be set
-    super.sub("object:Proc", "proc")
-  end
-
-  def self.allocate;
-    from_string "";
-  end
-
-  def self.from_string(string)
-    result = eval("proc {#{string}}")
-    result.source = string
-    return result
-  end
-
-  def self._load(code)
-    self.from_string(code)
-  end
-
-  def self.marshal_load;
-  end
-
-  def marshal_load;
-  end
+  module_function :handle, :get_lines, :source_descriptor
 end
 
-require 'yaml'
-YAML.add_ruby_type(/^proc/) do |type, val|
-  Proc.from_string(val["source"])
-end
+#class ProcHelpers #:nodoc:
+#  alias :old_inspect :inspect
+#
+#  def source_descriptor
+#    if md = /^#<Proc:0x[0-9A-Fa-f]+@(.+):(\d+)>$/.match(old_inspect)
+#      filename, line = md.captures
+#      return filename, line.to_i
+#    end
+#  end
+#
+#  def self.source_cache
+#    @source_cache ||= {}
+#  end
+#
+#  def source=(code)
+#    @source = Proc.source_cache[source_descriptor.join('/')] = code
+#  end
+#
+#  def source
+#    @source = Proc.source_cache[source_descriptor.join('/')]
+#    ProcSource.handle(self) unless @source
+#    @source
+#  end
+#
+#
+#  def inspect
+#    if source
+#      "proc {#{source}}"
+#    else
+#      old_inspect
+#    end
+#  end
+#
+#  def ==(other)
+#    if self.source && other.respond_to?(:source) && other.source
+#      self.source == other.source
+#    else
+#      self.object_id == other.object_id
+#    end
+#  end
+#
+#  def _dump(depth = 0)
+#    if source
+#      source
+#    else
+#      raise(TypeError, "Can't serialize Proc with unknown source code.")
+#    end
+#  end
+#
+#  def to_yaml(*args)
+#    self.source # force @source to be set
+#    super.sub("object:Proc", "proc")
+#  end
+#
+#  def self.allocate;
+#    from_string "";
+#  end
+#
+#  def self.from_string(string)
+#    result = eval("proc {#{string}}")
+#    result.source = string
+#    return result
+#  end
+#
+#  def self._load(code)
+#    self.from_string(code)
+#  end
+#
+#  def self.marshal_load;
+#  end
+#
+#  def marshal_load;
+#  end
+#end
+
+#require 'yaml'
+#YAML.add_ruby_type(/^proc/) do |type, val|
+#  Proc.from_string(val["source"])
+#end
 
 #EVAL_LINES__ = Hash.new
 #
@@ -228,28 +234,28 @@ end
 #end
 
 
-if __FILE__ == $0 then
-  require "pstore"
-
-  code = lambda { puts "Hello World!" }
-
-  File.open("proc.marshalled", "w") { |file| Marshal.dump(code, file) }
-  code = File.open("proc.marshalled") { |file| Marshal.load(file) }
-
-  code.call
-
-  store = PStore.new("proc.pstore")
-  store.transaction do
-    store["proc"] = code
-  end
-  store.transaction do
-    code = store["proc"]
-  end
-
-  code.call
-
-  File.open("proc.yaml", "w") { |file| YAML.dump(code, file) }
-  code = File.open("proc.yaml") { |file| YAML.load(file) }
-
-  code.call
-end
+#if __FILE__ == $0 then
+#  require "pstore"
+#
+#  code = lambda { puts "Hello World!" }
+#
+#  File.open("proc.marshalled", "w") { |file| Marshal.dump(code, file) }
+#  code = File.open("proc.marshalled") { |file| Marshal.load(file) }
+#
+#  code.call
+#
+#  store = PStore.new("proc.pstore")
+#  store.transaction do
+#    store["proc"] = code
+#  end
+#  store.transaction do
+#    code = store["proc"]
+#  end
+#
+#  code.call
+#
+#  File.open("proc.yaml", "w") { |file| YAML.dump(code, file) }
+#  code = File.open("proc.yaml") { |file| YAML.load(file) }
+#
+#  code.call
+#end

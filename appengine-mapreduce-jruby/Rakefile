@@ -2,9 +2,9 @@ require 'rubygems'
 require 'rake'
 
 
-task :install_appengine_mapreduce do
+task :check_dependencies do
   puts "Installing appengine-mapreduce artifact into maven"
-  raise $? unless system 'cd ../appengine-mapreduce && mvn scm:bootstrap'
+  raise $? unless system 'cd ../appengine-mapreduce && svn co \'https://appengine-mapreduce.googlecode.com/svn/trunk/java/\' . && mvn clean install'
 end
 
 task :build do

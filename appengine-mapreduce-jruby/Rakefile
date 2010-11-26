@@ -1,6 +1,12 @@
 require 'rubygems'
 require 'rake'
 
+
+task :install_appengine_mapreduce do
+  puts "Installing appengine-mapreduce artifact into maven"
+  raise $? unless system 'cd ../appengine-mapreduce && mvn scm:bootstrap'
+end
+
 task :build do
   puts "Packaging jars with maven ..."
   raise $? unless system 'mvn package'

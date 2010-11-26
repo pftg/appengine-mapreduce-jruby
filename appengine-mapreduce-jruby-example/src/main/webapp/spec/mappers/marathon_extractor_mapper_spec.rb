@@ -1,18 +1,4 @@
-require 'rubygems'
-
-begin
-  # Install stubs and environment
-  require 'appengine-apis/testing'
-  AppEngine::Testing.boot
-  require 'appengine-apis/urlfetch'
-  require 'appengine-apis/tempfile'
-rescue Exception => e
-  if ENV['VERBOSE']
-    puts e.inspect
-    puts e.backtrace
-  end
-end
-
+require File.join(File.dirname(__FILE__), '..','spec_helper')
 require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'mappers', 'marathon_extractor_mapper')
 
 require 'appengine-apis/datastore'

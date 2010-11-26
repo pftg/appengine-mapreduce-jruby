@@ -5,7 +5,7 @@ describe AppEngine::MapReduce::Job do
   describe '#map' do
     it 'should create map tasks from block' do
       subject.
-        map{ |k, v, ctx| puts 'test' }.
+        map { |k, v, ctx| puts 'test' }.
         should == "self.class.class_eval do\n  define_method(:map, lambda{ |k, v, ctx| puts 'test' })\nend\n"
     end
 

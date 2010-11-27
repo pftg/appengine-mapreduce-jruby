@@ -2,6 +2,5 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) ||
 
 module AppEngine
   module MapReduce
-    VERSION = '0.0.1'
   end
 end

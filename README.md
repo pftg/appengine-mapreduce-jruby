@@ -16,6 +16,11 @@ In Gemfile add:
     gem 'appengine-mapreduce'
 
 
+EXAMPLE:
+--------
+
+    
+
 REQUIREMENTS TO BUILD:
 ----------------------
 

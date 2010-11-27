@@ -1,6 +1,6 @@
 target/
 .idea
-appengine-mapreduce/
+/appengine-mapreduce/
 .*.sw?
 *.jar
 pkg/

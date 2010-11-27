@@ -16,7 +16,7 @@
   <parent>
     <groupId>com.jetthoughts.appengine.tools</groupId>
     <artifactId>appengine-mapreduce-jruby-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
   </parent>
 
   <url>http://code.google.com/p/appengine-mapreduce/</url>

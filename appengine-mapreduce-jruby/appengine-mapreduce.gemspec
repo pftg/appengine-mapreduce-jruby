@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{appengine-mapreduce}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Nikitochkin"]
@@ -21,6 +21,9 @@ Gem::Specification.new do |s|
     "lib/appengine-mapreduce/boot.rb",
     "lib/appengine-mapreduce/datastore_input_format.rb",
     "lib/appengine-mapreduce/job.rb",
+    "lib/appengine-mapreduce/mappable.rb",
+    "lib/appengine-mapreduce/proc_source.rb",
+    "lib/appengine-mapreduce/string_helpers.rb",
     "target/appengine-mapreduce-jruby-0.0.1-SNAPSHOT.jar",
     "target/dependency/aopalliance-1.0.jar",
     "target/dependency/appengine-mapper-0.0.1-SNAPSHOT.jar",

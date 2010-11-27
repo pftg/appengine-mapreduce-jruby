@@ -20,9 +20,9 @@ begin
     gem.summary = %Q{AppEngine-MapReduce Wrappers and Tools for JRuby}
     gem.description = %Q{Create Map Tasks with JRuby.}
     gem.email = "pftg@jetthoughts.com"
-    gem.homepage = "http://github.com/pftg/appengine-mapreduce"
+    gem.homepage = "http://github.com/pftg/appengine-mapreduce-jruby"
     gem.authors = ["Paul Nikitochkin"]
-    gem.add_dependency "appengine-apis", ">= 0"
+    gem.add_dependency "appengine-apis", ">= 0.0.19"
     gem.platform = Gem::Platform::RUBY
 
     gem.files =  Dir.glob('lib/**/*.rb')

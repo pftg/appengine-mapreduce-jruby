@@ -19,24 +19,24 @@ In Gemfile add:
 EXAMPLE:
 --------
 
-   require 'appengine-mapreduce'
+    require 'appengine-mapreduce'
 
-   job = AppEngine::MapReduce::Job.new :input_kind => 'PBVote'  
-   job.map do |k, v, context|
-     puts "map key: #{key}"
-   end
-
-
-   require 'appengine-mapreduce'
-
-   class Entry
-     include AppEngine::Resource
-     include AppEngine::Mappable
-   end
-
-   Entry.async_map do |k, v, c|
-     puts "map key: #{key}"
-   end
+    job = AppEngine::MapReduce::Job.new :input_kind => 'PBVote'  
+    job.map do |k, v, context|
+      puts "map key: #{key}"
+    end
+    
+    
+    require 'appengine-mapreduce'
+    
+    class Entry
+      include AppEngine::Resource
+      include AppEngine::Mappable
+    end
+    
+    Entry.async_map do |k, v, c|
+      puts "map key: #{key}"
+    end
 
 
 REQUIREMENTS TO BUILD:

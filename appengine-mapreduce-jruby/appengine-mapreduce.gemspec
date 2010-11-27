@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Nikitochkin"]
-  s.date = %q{2010-11-19}
+  s.date = %q{2010-11-27}
   s.description = %q{Create Map Tasks with JRuby.}
   s.email = %q{pftg@jetthoughts.com}
   s.files = [
@@ -23,8 +23,6 @@ Gem::Specification.new do |s|
     "lib/appengine-mapreduce/job.rb",
     "target/appengine-mapreduce-jruby-0.0.1-SNAPSHOT.jar",
     "target/dependency/aopalliance-1.0.jar",
-    "target/dependency/appengine-api-1.0-sdk-1.3.8.jar",
-    "target/dependency/appengine-api-labs-1.3.8.jar",
     "target/dependency/appengine-mapper-0.0.1-SNAPSHOT.jar",
     "target/dependency/charts4j-1.2.jar",
     "target/dependency/commons-cli-1.2.jar",

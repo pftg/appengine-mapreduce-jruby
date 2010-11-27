@@ -1,3 +1,8 @@
+require 'datamapper'
+DataMapper.setup(:default, 'appengine://auto')
+
+require 'lib/mappable'
+
 class Job
   include DataMapper::Resource
 
@@ -5,8 +10,6 @@ class Job
   property :title, String, :required => true
   property :code, Text, :required => true
   property :input, Blob
-
-  property :deleted_at, DataMapper::Types::ParanoidDateTime
 
   def activate *params
     logger.debug "Activate job at #{Time.now}: #{title}."
@@ -38,6 +41,7 @@ end
 
 class ScrapedPage
   include DataMapper::Resource
+  include AppEngine::Mappable
 
   storage_names[:default] = 'ScrapedPage'
 

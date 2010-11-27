@@ -9,7 +9,7 @@ end
 
 task :build do
   puts "Packaging jars with maven ..."
-  raise $? unless system 'mvn package'
+  raise $? unless system 'mvn clean package'
 end
 
 

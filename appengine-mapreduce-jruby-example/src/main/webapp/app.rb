@@ -27,12 +27,19 @@ get '/scrapper' do
 end
 
 get '/extract' do
-  job_params = {
-          'input_kind' => "ScrapedPage",
-          "map"=> "require 'lib/mappers/marathon_extractor_mapper'; puts 'Marathon Extractor Mapper'; def map(k,v,c); p v; MarathonExtractorMapper.map(k,v,c); end\n"
-  }
+  require 'lib/models'
 
-  AppEngine::MapReduce::Job.new(job_params).run
+  ScrapedPage.async_map do |k,v,c|
+    require 'lib/mappers/marathon_extractor_mapper'
+    MarathonExtractorMapper.map(k,v,c);
+  end
+
+  #job_params = {
+  #        'input_kind' => "ScrapedPage",
+  #        "map"=> "require 'lib/mappers/marathon_extractor_mapper'; puts 'Marathon Extractor Mapper'; def map(k,v,c); p v; MarathonExtractorMapper.map(k,v,c); end\n"
+  #}
+
+  #AppEngine::MapReduce::Job.new(job_params).run
 
 #  redirect '/mapreduce/status'
 

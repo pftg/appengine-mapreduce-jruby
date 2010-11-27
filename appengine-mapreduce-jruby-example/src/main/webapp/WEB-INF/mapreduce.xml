@@ -22,11 +22,7 @@
         </property>
         <property>
             <name>mapreduce.ruby.script</name>
-            <value template="optional">
-                def map *args
-                p args
-                end
-            </value>
+            <value template="optional"> def map *args; p args; end </value>
         </property>
         <property>
             <name>mapreduce.inputformat.class</name>

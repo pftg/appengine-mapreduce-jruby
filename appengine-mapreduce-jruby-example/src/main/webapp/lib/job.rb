@@ -14,10 +14,10 @@ module AppEngine
 
     CALLBACK_KEY = "mapreduce.appengine.donecallback.url"
 
-    #import com.google.appengine.tools.mapreduce.ConfigurationXmlUtil
-    #import com.google.appengine.tools.mapreduce.DatastoreInputFormat
+    import com.google.appengine.tools.mapreduce.ConfigurationXmlUtil
+    import com.google.appengine.tools.mapreduce.DatastoreInputFormat
 
-    #import com.jetthoughts.appengine.tools.mapreduce.JRubyMapper
+    import com.jetthoughts.appengine.tools.mapreduce.JRubyMapper
 
     class Job
       attr_accessor :map, :reduce, :input_kind, :output_kind, :properties, :input_class

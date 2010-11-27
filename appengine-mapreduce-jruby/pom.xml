@@ -38,6 +38,7 @@
       <groupId>org.jruby</groupId>
       <artifactId>jruby-complete</artifactId>
       <version>1.5.5</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -77,11 +78,13 @@
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>
       <version>${gae.sdk.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-labs</artifactId>
       <version>${gae.sdk.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -149,8 +152,8 @@
             <configuration>
               <!--outputDirectory>${project.build.directory}</outputDirectory -->
             <includeScope>compile</includeScope>
-            <excludeScope>test,runtime</excludeScope>
-            <excludeArtifactIds>jruby-complete,jetty,easymock,easymockclassextension</excludeArtifactIds>
+            <excludeScope>test</excludeScope>
+            <excludeArtifactIds>appengine-api-labs,appengine-api-1.0-sdk,jruby-complete,jetty,easymock,easymockclassextension</excludeArtifactIds>
           </configuration>
         </execution>
       </executions>
@@ -220,8 +223,6 @@
   </pluginRepository>
 </pluginRepositories>
 
-<!--
-
     <profiles>
         <profile>
             <id>bootstrap</id>
@@ -239,6 +240,7 @@
                                 </goals>
                                 <configuration>
                                     <goals>install</goals>
+                                    <goalsDirectory>../../../appengine-mapreduce</goalsDirectory>
                                     <connectionUrl>
                                         scm:svn:http://appengine-mapreduce.googlecode.com/svn/trunk/java
                                     </connectionUrl>
@@ -249,5 +251,5 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>-->
+    </profiles>
 </project>

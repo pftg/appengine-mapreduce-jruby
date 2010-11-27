@@ -2,7 +2,7 @@ require 'appengine-apis/logger'
 require 'appengine-apis/datastore'
 
 require 'zlib'
-require 'json/pure'
+require 'json'
 
 require 'lib/marathon_extractor'
 

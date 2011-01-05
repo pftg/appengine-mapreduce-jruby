@@ -81,18 +81,6 @@
       <name>atlassian</name>
       <url>http://maven.atlassian.com/repository/public/</url>
     </repository>
-    <!--<repository>-->
-      <!--<id>rubygems</id>-->
-      <!--<releases>-->
-        <!--<updatePolicy>never</updatePolicy>-->
-        <!--<checksumPolicy>ignore</checksumPolicy>-->
-        <!--</releases>-->
-      <!--<snapshots>-->
-        <!--<enabled>false</enabled>-->
-        <!--</snapshots>-->
-      <!--<url>http://rubygems.org/gems</url>-->
-      <!--<layout>gem</layout>-->
-      <!--</repository>-->
     <repository>
       <id>seasar</id>
       <url>http://maven.seasar.org/maven2</url>
@@ -107,7 +95,6 @@
       <name>Google Maven Snapshot Repository</name>
       <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
     </repository>
-
   </repositories>
 
   <pluginRepositories>
@@ -116,7 +103,6 @@
       <name>Maven Google App Engine Repository</name>
       <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
     </pluginRepository>
-
     <pluginRepository>
       <id>ossrh</id>
       <name>Sonatype OSS Repository</name>
@@ -128,5 +114,4 @@
       <url>http://maven.seasar.org/maven2</url>
     </pluginRepository>
   </pluginRepositories>
-
 </project>

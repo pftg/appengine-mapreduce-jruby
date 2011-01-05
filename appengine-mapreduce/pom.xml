@@ -38,12 +38,6 @@
     </license>
   </licenses>
 
-  <properties>
-    <gae.sdk.version>
-      1.4.0
-    </gae.sdk.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.google.code.guice</groupId>

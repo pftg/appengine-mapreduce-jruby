@@ -24,8 +24,11 @@
 
   <properties>
     <gae.sdk.version>
-      1.3.8
+      1.4.0
     </gae.sdk.version>
+    <jruby.version>
+      1.5.6
+    </jruby.version>
     <jruby.plugin.version>
       0.22.0
     </jruby.plugin.version>

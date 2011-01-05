@@ -1,234 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>appengine-mapreduce-jruby-example</artifactId>
-    <packaging>war</packaging>
+  <artifactId>appengine-mapreduce-jruby-example</artifactId>
+  <packaging>war</packaging>
 
-    <parent>
-        <groupId>com.jetthoughts.appengine.tools</groupId>
-        <artifactId>appengine-mapreduce-jruby-parent</artifactId>
-        <!-- ☐ ☑ ☒ -->
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-
-    <properties>
-        <gae.sdk.version>
-            1.3.8
-        </gae.sdk.version>
-        <jruby.plugin.version>
-            0.22.0
-        </jruby.plugin.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.jetthoughts.appengine.tools</groupId>
-            <artifactId>appengine-mapreduce-jruby</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-          </dependency>
-
-          <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>${gae.sdk.version}</version>
-          </dependency>
-
-          <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-labs</artifactId>
-            <version>${gae.sdk.version}</version>
-          </dependency>
-          
-          <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-testing</artifactId>
-            <version>${gae.sdk.version}</version>
-            <scope>test</scope>
-          </dependency>
-          
-          <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-stubs</artifactId>
-            <version>${gae.sdk.version}</version>
-            <scope>test</scope>
-          </dependency>
-
-          <dependency>
-            <groupId>org.jruby.rack</groupId>
-            <artifactId>jruby-rack</artifactId>
-            <version>1.0.3</version>
-          </dependency>
-
-          <dependency>
-            <groupId>org.jruby</groupId>
-            <artifactId>jruby-complete</artifactId>
-            <version>1.5.5</version>
-          </dependency>
+  <parent>
+    <groupId>com.jetthoughts.appengine.tools</groupId>
+    <artifactId>appengine-mapreduce-jruby-parent</artifactId>
+    <!-- ☐ ☑ ☒ -->
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
 
 
-          <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-servlet_2.5_spec</artifactId>
-            <version>1.2</version>
-            <scope>provided</scope>
-          </dependency>
-          <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.7</version>
-            <scope>test</scope>
-          </dependency>
-          <dependency>
-            <groupId>org.easymock</groupId>
-            <artifactId>easymock</artifactId>
-            <version>2.5.2</version>
-            <scope>test</scope>
-          </dependency>
-          <dependency>
-            <groupId>org.easymock</groupId>
-            <artifactId>easymockclassextension</artifactId>
-            <version>2.5.2</version>
-            <scope>test</scope>
-          </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>com.jetthoughts.appengine.tools</groupId>
+      <artifactId>appengine-mapreduce-jruby</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 
-        </dependencies>
-        <build>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-war-plugin</artifactId>
-              <version>2.1-alpha-1</version>
-              <configuration>
-                <useCache>false</useCache>
-              </configuration>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                <source>1.6</source>
-                <target>1.6</target>
-              </configuration>
-            </plugin>
-            <plugin>
-              <groupId>de.saumya.mojo</groupId>
-              <artifactId>gemify-maven-plugin</artifactId>
-              <version>${jruby.plugin.version}</version>
-            </plugin>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>${gae.sdk.version}</version>
+    </dependency>
 
-            <plugin>
-              <groupId>de.saumya.mojo</groupId>
-              <artifactId>gem-maven-plugin</artifactId>
-              <version>${jruby.plugin.version}</version>
-            </plugin>
-            <plugin>
-              <groupId>net.kindleit</groupId>
-              <artifactId>maven-gae-plugin</artifactId>
-              <version>0.7.2</version>
-              <dependencies>
-                <dependency>
-                  <groupId>net.kindleit</groupId>
-                  <artifactId>gae-runtime</artifactId>
-                  <version>1.3.8.1</version>
-                  <type>pom</type>
-                </dependency>
-              </dependencies>
-              <configuration>
-                <sdkDir>../appengine-mapreduce/sdk/appengine-java-sdk-1.3.7</sdkDir>
-                <unpackVersion>${gae.sdk.version}</unpackVersion>
-              </configuration>
-            </plugin>
-          </plugins>
-        </build>
-        <repositories>
-          <repository>
-            <id>DataNucleus_Repos</id>
-            <name>DataNucleus Repository</name>
-            <url>http://www.datanucleus.org/downloads/maven</url>
-          </repository>
-          <repository>
-            <id>DataNucleus_Repos2</id>
-            <name>DataNucleus Repository</name>
-            <url>http://www.datanucleus.org/downloads/maven2</url>
-          </repository>
-          <repository> <!-- Required for transaction-api transitive dep -->
-            <id>Java_Net_LEGACY</id>
-            <name>Java.Net legacy</name>
-            <url>http://download.java.net/maven/1/</url>
-          </repository>
-          <repository>
-            <id>codehaus</id>
-            <url>http://repository.codehaus.org</url>
-          </repository>
-          <repository>
-            <id>bedatadriven-thirdparty</id>
-            <url>http://nexus.bedatadriven.com/content/repositories/thirdparty/</url>
-          </repository>
-          <repository>
-            <id>apache</id>
-            <name>apache</name>
-            <url>http://repository.apache.org</url>
-          </repository>
-          <repository>
-            <id>appache-rep</id>
-            <name>apache-rep</name>
-            <url>https://repository.apache.org/content/repositories/releases/</url>
-          </repository>
-          <repository>
-            <id>atlassian</id>
-            <name>atlassian</name>
-            <url>http://maven.atlassian.com/repository/public/</url>
-          </repository>
-          <!--<repository>-->
-            <!--<id>rubygems</id>-->
-            <!--<releases>-->
-              <!--<updatePolicy>never</updatePolicy>-->
-              <!--<checksumPolicy>ignore</checksumPolicy>-->
-              <!--</releases>-->
-            <!--<snapshots>-->
-              <!--<enabled>false</enabled>-->
-              <!--</snapshots>-->
-            <!--<url>http://rubygems.org/gems</url>-->
-            <!--<layout>gem</layout>-->
-            <!--</repository>-->
-          <repository>
-            <id>seasar</id>
-            <url>http://maven.seasar.org/maven2</url>
-          </repository>
-          <repository>
-            <id>maven-gae-plugin-repo</id>
-            <name>Maven Google App Engine Repository</name>
-            <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
-          </repository>
-        </repositories>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-labs</artifactId>
+      <version>${gae.sdk.version}</version>
+    </dependency>
 
-        <pluginRepositories>
-          <pluginRepository>
-            <id>ossrh</id>
-            <name>Sonatype OSS Repository</name>
-            <url>http://oss.sonatype.org/content/groups/public</url>
-            <layout>default</layout>
-          </pluginRepository>
-          <pluginRepository>
-            <id>maven-gae-plugin-repo</id>
-            <name>maven-gae-plugin repository</name>
-            <url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-testing</artifactId>
+      <version>${gae.sdk.version}</version>
+      <scope>test</scope>
+    </dependency>
 
-          </pluginRepository>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>${gae.sdk.version}</version>
+      <scope>test</scope>
+    </dependency>
 
-          <pluginRepository>
-            <id>seasar</id>
-            <url>http://maven.seasar.org/maven2</url>
-          </pluginRepository>
+    <dependency>
+      <groupId>org.jruby.rack</groupId>
+      <artifactId>jruby-rack</artifactId>
+      <version>1.0.3</version>
+    </dependency>
 
-          <pluginRepository>
-            <id>DataNucleus_2</id>
-            <url>http://www.datanucleus.org/downloads/maven2/</url>
-          </pluginRepository>
-        </pluginRepositories>
+    <dependency>
+      <groupId>org.jruby</groupId>
+      <artifactId>jruby-complete</artifactId>
+      <version>${jruby.version}</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-servlet_2.5_spec</artifactId>
+      <version>1.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>2.5.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymockclassextension</artifactId>
+      <version>2.5.2</version>
+      <scope>test</scope>
+    </dependency>
 
-      </project>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1-alpha-1</version>
+        <configuration>
+          <useCache>false</useCache>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>de.saumya.mojo</groupId>
+        <artifactId>gemify-maven-plugin</artifactId>
+        <version>${jruby.plugin.version}</version>
+      </plugin>
+
+      <plugin>
+        <groupId>de.saumya.mojo</groupId>
+        <artifactId>gem-maven-plugin</artifactId>
+        <version>${jruby.plugin.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

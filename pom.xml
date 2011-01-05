@@ -69,7 +69,7 @@
     <repository>
       <id>apache</id>
       <name>apache</name>
-      <url>http://repository.apache.org</url>
+      <url>https://repository.apache.org</url>
     </repository>
     <repository>
       <id>appache-rep</id>
@@ -97,9 +97,26 @@
       <id>seasar</id>
       <url>http://maven.seasar.org/maven2</url>
     </repository>
+    <repository>
+      <id>maven-gae-plugin-repo</id>
+      <name>Maven Google App Engine Repository</name>
+      <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
+    </repository>
+    <repository>
+      <id>google-maven-snapshot-repository</id>
+      <name>Google Maven Snapshot Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+    </repository>
+
   </repositories>
 
   <pluginRepositories>
+    <pluginRepository>
+      <id>maven-gae-plugin-repo</id>
+      <name>Maven Google App Engine Repository</name>
+      <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
+    </pluginRepository>
+
     <pluginRepository>
       <id>ossrh</id>
       <name>Sonatype OSS Repository</name>

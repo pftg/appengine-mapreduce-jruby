@@ -1,120 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.jetthoughts.appengine.tools</groupId>
-  <artifactId>appengine-mapreduce-jruby-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jetthoughts.appengine.tools</groupId>
+    <artifactId>appengine-mapreduce-jruby-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <licenses>
-    <license>
-      <name>Apache 2</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+    <scm>
+        <connection>scm:git:http://github.com/pftg/appengine-mapreduce-jruby/</connection>
+    </scm>
 
-  <modules>
-    <module>appengine-mapreduce</module>
-    <module>appengine-mapreduce-jruby</module>
-    <module>appengine-mapreduce-jruby-example</module>
-  </modules>
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-  <properties>
-    <gae.sdk.version>
-      1.4.0
-    </gae.sdk.version>
-    <jruby.version>
-      1.5.6
-    </jruby.version>
-    <jruby.plugin.version>
-      0.22.0
-    </jruby.plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <modules>
+        <module>appengine-mapreduce</module>
+        <module>appengine-mapreduce-jruby</module>
+        <module>appengine-mapreduce-jruby-example</module>
+    </modules>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
+    <properties>
+        <gae.sdk.version>
+            1.4.0
+        </gae.sdk.version>
+        <jruby.version>
+            1.5.6
+        </jruby.version>
+        <jruby.plugin.version>
+            0.22.0
+        </jruby.plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-      <plugin>
-        <groupId>de.saumya.mojo</groupId>
-        <artifactId>gemify-maven-plugin</artifactId>
-        <version>${jruby.plugin.version}</version>
-      </plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
 
-      <plugin>
-        <groupId>de.saumya.mojo</groupId>
-        <artifactId>gem-maven-plugin</artifactId>
-        <version>${jruby.plugin.version}</version>
-      </plugin>
-    </plugins>
-  </build>
+            <plugin>
+                <groupId>de.saumya.mojo</groupId>
+                <artifactId>gemify-maven-plugin</artifactId>
+                <version>${jruby.plugin.version}</version>
+            </plugin>
 
-  <repositories>
-    <repository>
-      <id>codehaus</id>
-      <url>http://repository.codehaus.org</url>
-    </repository>
-    <repository>
-      <id>bedatadriven-thirdparty</id>
-      <url>http://nexus.bedatadriven.com/content/repositories/thirdparty/</url>
-    </repository>
-    <repository>
-      <id>apache</id>
-      <name>apache</name>
-      <url>https://repository.apache.org</url>
-    </repository>
-    <repository>
-      <id>appache-rep</id>
-      <name>apache-rep</name>
-      <url>https://repository.apache.org/content/repositories/releases/</url>
-    </repository>
-    <repository>
-      <id>atlassian</id>
-      <name>atlassian</name>
-      <url>http://maven.atlassian.com/repository/public/</url>
-    </repository>
-    <repository>
-      <id>seasar</id>
-      <url>http://maven.seasar.org/maven2</url>
-    </repository>
-    <repository>
-      <id>maven-gae-plugin-repo</id>
-      <name>Maven Google App Engine Repository</name>
-      <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
-    </repository>
-    <repository>
-      <id>google-maven-snapshot-repository</id>
-      <name>Google Maven Snapshot Repository</name>
-      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
-    </repository>
-  </repositories>
+            <plugin>
+                <groupId>de.saumya.mojo</groupId>
+                <artifactId>gem-maven-plugin</artifactId>
+                <version>${jruby.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>maven-gae-plugin-repo</id>
-      <name>Maven Google App Engine Repository</name>
-      <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>ossrh</id>
-      <name>Sonatype OSS Repository</name>
-      <url>http://oss.sonatype.org/content/groups/public</url>
-      <layout>default</layout>
-    </pluginRepository>
-    <pluginRepository>
-      <id>seasar</id>
-      <url>http://maven.seasar.org/maven2</url>
-    </pluginRepository>
-  </pluginRepositories>
+    <repositories>
+        <repository>
+            <id>codehaus</id>
+            <url>http://repository.codehaus.org</url>
+        </repository>
+        <repository>
+            <id>bedatadriven-thirdparty</id>
+            <url>http://nexus.bedatadriven.com/content/repositories/thirdparty/</url>
+        </repository>
+        <repository>
+            <id>apache</id>
+            <name>apache</name>
+            <url>https://repository.apache.org</url>
+        </repository>
+        <repository>
+            <id>appache-rep</id>
+            <name>apache-rep</name>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>atlassian</id>
+            <name>atlassian</name>
+            <url>http://maven.atlassian.com/repository/public/</url>
+        </repository>
+        <repository>
+            <id>seasar</id>
+            <url>http://maven.seasar.org/maven2</url>
+        </repository>
+        <repository>
+            <id>maven-gae-plugin-repo</id>
+            <name>Maven Google App Engine Repository</name>
+            <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
+        </repository>
+        <repository>
+            <id>google-maven-snapshot-repository</id>
+            <name>Google Maven Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-gae-plugin-repo</id>
+            <name>Maven Google App Engine Repository</name>
+            <url>http://maven-gae-plugin.googlecode.com/svn/repository/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>ossrh</id>
+            <name>Sonatype OSS Repository</name>
+            <url>http://oss.sonatype.org/content/groups/public</url>
+            <layout>default</layout>
+        </pluginRepository>
+        <pluginRepository>
+            <id>seasar</id>
+            <url>http://maven.seasar.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

@@ -7,7 +7,6 @@ bundle_path ".gems/bundler_gems"
 gem 'appengine-rack'
 gem 'appengine-apis'
 gem 'appengine-mapreduce'
-#gem 'json_pure'
 gem 'json-jruby'
 
 gem 'datamapper'

@@ -1,5 +1,11 @@
 indexes:
 
+- kind: PageURL
+  ancestor: no
+  properties:
+  - name: __key__
+    direction: desc
+
 - kind: PBFVotes
   ancestor: no
   properties:

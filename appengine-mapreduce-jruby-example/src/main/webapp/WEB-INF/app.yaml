@@ -1,4 +1,4 @@
-application: otyn
+application: test
 version: mapreduce
 runtime: jruby
 

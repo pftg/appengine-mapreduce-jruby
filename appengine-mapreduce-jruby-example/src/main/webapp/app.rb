@@ -1,58 +1,42 @@
 require 'sinatra'
 
 require 'appengine-apis/datastore'
-require 'lib/job'
 
-require 'base64'
-require 'zlib'
-require 'appengine-apis/urlfetch'
+# Configure DataMapper to use the App Engine datastore 
+DataMapper.setup(:default, "appengine://auto")
+
+class PageURL
+  include DataMapper::AppEngineResource
+  include AppEngine::Mappable
+
+  property :url, Link
+
+  has :n, :pages
+end
+
+class Page
+  include DataMapper::AppEngineResource
+  include AppEngine::Mappable
+
+  property :body, Text
+
+  belongs_to_entity :page_url
+  timestamps :at 
+end
 
 get '/' do
 end
 
-get '/scrapper' do
-  hdoc = Net::HTTP.get(URI.parse("http://odds.marathonbet.com/odds-view.phtml?h=0&r0=0&r0=0&l=&m=1"))
-
-  e = AppEngine::Datastore::Entity.new('ScrapedPage')
-
-  e[:created_at] = Time.now
-  e[:updated_at] = Time.now
-  e[:converted_body] = AppEngine::Datastore::Blob.new(Zlib::Deflate.deflate(java.lang.String.new(hdoc.to_java_bytes, 'cp1251').to_s, Zlib::BEST_COMPRESSION))
-
-  e[:zipped] = true
-
-  AppEngine::Datastore.put e
-
-  Zlib::Inflate.inflate(e[:converted_body].to_s)
+get '/page_urls' do
+  PageURL.create(params[:page_url])
+  PageURL.create :url => 'http://mail.ru'
+  PageURL.create :url => 'http://jetthoughts.com'
+  PageURL.all.to_a.inspect
 end
 
-get '/extract' do
-  require 'lib/models'
-
-  ScrapedPage.async_map do |k,v,c|
-    require 'lib/mappers/marathon_extractor_mapper'
-    MarathonExtractorMapper.map(k,v,c);
+get '/download_pages' do
+  PageURL.async_map do |k, v, c|
+    require 'appengine-apis/urlfetch'
+    v.pages.create(:body => AppEngine::URLFetch.fetch(v.url))
   end
-
-  #job_params = {
-  #        'input_kind' => "ScrapedPage",
-  #        "map"=> "require 'lib/mappers/marathon_extractor_mapper'; puts 'Marathon Extractor Mapper'; def map(k,v,c); p v; MarathonExtractorMapper.map(k,v,c); end\n"
-  #}
-
-  #AppEngine::MapReduce::Job.new(job_params).run
-
-#  redirect '/mapreduce/status'
-
-end
-
-post '/run' do
-  job = AppEngine::MapReduce::Job.new({'input_kind' => "PBFVotes"}.merge(params))
-  job.run
-  redirect '/mapreduce/status'
-end
-
-get '/scraped_page' do
-  entry = AppEngine::Datastore::Query.new('ScrapedPage').fetch(:limit => 1)
-
-  Zlib::Inflate.inflate(entry.first['converted_body'])
 end

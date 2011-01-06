@@ -4,3 +4,5 @@ target/
 .*.sw?
 *.jar
 pkg/
+*.releaseBackup
+/release.properties

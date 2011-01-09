@@ -1,6 +1,9 @@
 application: test
-version: mapreduce
+version: test
 runtime: jruby
+
+precompilation_enabled: false
+sessions_enabled: true
 
 handlers:
 - url: /remote_api/*

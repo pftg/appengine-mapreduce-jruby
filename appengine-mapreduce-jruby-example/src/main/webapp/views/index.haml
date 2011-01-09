@@ -1,0 +1,7 @@
+- @page_urls.each do |page_url|
+  .url= page_url.url
+
+#new_page_url
+  %form{:method => :post, :action => @page_url}
+    %input{:name => 'page_url[url]'}
+    %input{:type => :submit}

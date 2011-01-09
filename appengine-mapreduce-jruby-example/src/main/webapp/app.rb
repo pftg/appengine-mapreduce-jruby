@@ -2,41 +2,40 @@ require 'sinatra'
 
 require 'appengine-apis/datastore'
 
-# Configure DataMapper to use the App Engine datastore 
-DataMapper.setup(:default, "appengine://auto")
+require 'models'
 
-class PageURL
-  include DataMapper::AppEngineResource
-  include AppEngine::Mappable
-
-  property :url, Link
-
-  has :n, :pages
-end
-
-class Page
-  include DataMapper::AppEngineResource
-  include AppEngine::Mappable
-
-  property :body, Text
-
-  belongs_to_entity :page_url
-  timestamps :at 
-end
-
-get '/' do
-end
+require 'haml'
+set :haml, :format => :html5
 
 get '/page_urls' do
-  PageURL.create(params[:page_url])
-  PageURL.create :url => 'http://mail.ru'
-  PageURL.create :url => 'http://jetthoughts.com'
-  PageURL.all.to_a.inspect
+  @page_urls = PageURL.all
+  haml :index
+end
+
+post '/page_urls' do
+  PageURL.create!(params[:page_url])
+  redirect '/page_urls'
 end
 
 get '/download_pages' do
   PageURL.async_map do |k, v, c|
+
+    require 'rubygems'
+
     require 'appengine-apis/urlfetch'
-    v.pages.create(:body => AppEngine::URLFetch.fetch(v.url))
+    require 'appengine-apis/datastore'
+
+    return unless v[:url]
+
+    require "bundler"
+    Bundler.setup(:default, :development)
+
+    require 'models'
+
+    page_url = PageURL.get(k)
+
+    puts "Download URL: #{v[:url]}"
+    puts body = AppEngine::URLFetch.fetch(v[:url]).body
+    page_url.pages.create :body => body
   end
 end
